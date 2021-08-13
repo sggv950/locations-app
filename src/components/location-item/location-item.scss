@@ -1,0 +1,28 @@
+.location-item-container {
+  cursor: pointer;
+  position: relative;
+  background-color: var(--regular-white);
+  color: var(--text-grey);
+  padding: 20px 10px;
+  box-shadow: var(--general-box-shadow);
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 5px;
+
+  &.selected-location {
+    border: 2px solid var(--mint-green);
+  }
+}
+
+.remove-location-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  background-color: var(--regular-white);
+  border: none;
+  border-radius: var(--general-border-radius);
+  width: 20px;
+  height: 20px;
+}

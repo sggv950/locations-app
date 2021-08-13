@@ -1,0 +1,8 @@
+.location-list-container {
+  grid-area: locations-list-section;
+  background-color: var(--darker-white);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

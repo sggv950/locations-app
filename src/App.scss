@@ -1,0 +1,38 @@
+:root {
+  --general-border-radius: 10px;
+  --general-box-shadow-color: 0, 0, 0;
+  --general-box-shadow: 0px 5px 12px 0px rgba(var(--general-box-shadow-color), 0.2);
+  --main-background-color: #282c34;
+  --darker-white: #F6F9FC;
+  --text-grey: #20303c;
+  --regular-white: #ffffff;
+  --mint-green: #42b883;
+  --search-results-border: #ced4da;
+  --text-font-size: 16px;
+  --text-font-size-sm: 12px;
+  --text-font-family: 'Quicksand';
+}
+
+.app {
+  display: grid;
+  background-color: var(--main-background-color);
+  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: minmax(400px, 30%) auto;
+  grid-template-areas: 
+    "header header" 
+    "locations-list-section locations-details-section";
+}
+
+.locations-list-section {
+  grid-area: locations-list-section;
+  background-color: var(--darker-white);
+}
+
+.locations-details-section {
+  grid-area: locations-details-section;
+  background-color: lightblue;
+}
+

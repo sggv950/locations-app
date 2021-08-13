@@ -1,0 +1,11 @@
+.app-header {
+  grid-area: header;
+  display: flex;
+  background-color: var(--main-background-color);
+  color: var(--darker-white);
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}

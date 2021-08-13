@@ -1,0 +1,1 @@
+export const idToFilter = idToMatch => id => idToMatch !== id;

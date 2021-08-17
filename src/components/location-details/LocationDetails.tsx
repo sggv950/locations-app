@@ -16,7 +16,7 @@ export const LocationDetails = () => {
         <LocationAdditionalInfo selectedLocation={selectedLocation} />
       )}
       {selectedLocation && <MapComponent
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${REACT_APP_MAPS_API}&v=3.exp&libraries=geometry,drawing,places`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${REACT_APP_MAPS_API}&v=3.exp&libraries=geometry,places`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}

@@ -6,11 +6,18 @@ import {
   Marker,
 } from 'react-google-maps';
 
+const defaultMapOptions = {
+  fullscreenControl: false,
+  zoomControl: false,
+  mapTypeControl: false,
+  streetViewControl: false
+};
+
+
 export const MapComponent = withScriptjs(
   withGoogleMap((props: any) => {
-
     return (
-      <GoogleMap defaultZoom={13} center={{ lat: (+props.lat), lng: (+props.lng) }}>
+      <GoogleMap defaultOptions={defaultMapOptions} defaultZoom={13} center={{ lat: (+props.lat), lng: (+props.lng) }}>
         <Marker position={{ lat: (+props.lat), lng: (+props.lng) }} />
       </GoogleMap>
     );

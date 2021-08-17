@@ -10,7 +10,7 @@
 
   a {
     text-decoration: none;
-    &:link, &:visited, &:hover, &:active,{
+    &:link, &:visited, &:hover, &:active {
       color: var(--darker-white);
     }
   }

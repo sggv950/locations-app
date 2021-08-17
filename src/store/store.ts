@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import createSocketIoMiddleware from 'redux-socket.io';
 import { applyMiddleware, compose, createStore } from "redux";
 import { reducer } from "./reducer";
-let socket = io('http://localhost:5000');
+let socket = io();
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 declare global {

@@ -4,13 +4,19 @@
   background-color: var(--regular-white);
   color: var(--text-grey);
   padding: 20px 10px;
-  box-shadow: var(--general-box-shadow);
+  box-shadow: var(--box-shadow);
   margin-bottom: 10px;
   width: 100%;
   border-radius: 5px;
 
   &.selected-location {
     border: 2px solid var(--mint-green);
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 10px 5px;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
   }
 }
 
@@ -22,7 +28,16 @@
   font-size: 20px;
   background-color: var(--regular-white);
   border: none;
-  border-radius: var(--general-border-radius);
+  border-radius: var(--border-radius);
   width: 20px;
   height: 20px;
+}
+
+.location-item-address {
+  font-size: var(--font-size-sm);
+
+  @media screen and (max-width: 800px) {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+  }
 }

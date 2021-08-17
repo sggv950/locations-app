@@ -5,7 +5,7 @@ import './header.scss';
 export const Header = () => {
   return (
     <header className='app-header'>
-      <h1>header</h1>
+      <h2>Locations App</h2>
       <FontAwesomeIcon icon={faCodeBranch} size="lg" />
     </header>
   );

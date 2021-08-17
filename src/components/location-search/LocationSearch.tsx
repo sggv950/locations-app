@@ -1,39 +1,65 @@
-import React, { useCallback, useState } from 'react';
+import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash.debounce';
 import './location-search.scss';
-import { searchLocation } from '../../api/locations-service';
+import { getNewLocationFromSearch, Prediction } from '../../api/locations-service';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { addLocation, searchLocation, serverAddLocation, setActiveLocation, updateSearchResults } from '../../store/actions';
 
-const searchResult = (location: any) => {
-  return <li className='location-search-results-item'>{location.title}</li>;
+export type LocationSearchProps = {
+  handleToggleLocationSearch: (bool: boolean) => void
+}
+
+type HandleClick = (id: string) => void;
+
+const searchResult = (suggestion: Prediction, handleClick: HandleClick) => {
+  return (
+    <li
+      key={suggestion.id}
+      onClick={() => handleClick(suggestion.id)}
+      className='location-search-results-item'
+    >
+      {suggestion.description}
+    </li>
+  );
 };
 
-export const LocationSearch = () => {
+export const LocationSearch = ({handleToggleLocationSearch}: LocationSearchProps) => {
   const [searchInput, updateSearchInput] = useState('');
-  const [searchResults, updateSearchResults] = useState([]);
+  const searchResults = useAppSelector(state => state.searchResults);
+  const dispatch = useAppDispatch();
 
-  const debouncedConsole = useCallback(
-    debounce(async (value) => {
+  useEffect(() => {
+    dispatch(updateSearchResults([]));
+  }, [])
+
+  const debouncedSearch = useCallback(
+    debounce(async (value: string) => {
       if (value) {
-        const results = await searchLocation();
-        console.log('http res: ', results);
-        updateSearchResults(results);
+        dispatch(searchLocation(value))
       } else {
-        updateSearchResults([]);
+        dispatch(updateSearchResults([]));
       }
     }, 1000),
     []
   );
 
-  const handleSearchInput = (ev: any) => {
-    const value = ev.target.value;
+  const handleResult = async (id: string) => {
+    const location = await getNewLocationFromSearch(id);
+    dispatch(addLocation(location));
+    dispatch(setActiveLocation(id));
+    dispatch(serverAddLocation(location));
+    handleToggleLocationSearch(false);
+  };
+
+  const handleSearchInput = (ev: SyntheticEvent) => {
+    const value = (ev.target as HTMLInputElement).value;
     updateSearchInput(value);
-    console.log(value);
-    debouncedConsole(value);
+    debouncedSearch(value);
   };
 
   return (
     <div className='location-search-container'>
-      <h4 className='location-search-title'>Search for location:</h4>
+      <p className='location-search-title'>Search for location:</p>
       <input
         className='location-search-input'
         value={searchInput}
@@ -42,7 +68,8 @@ export const LocationSearch = () => {
       />
       <div className='location-search-results'>
         <ul className='location-search-results-list'>
-          {!!searchResults.length && searchResults.map(searchResult)}
+          {!!searchResults.length &&
+            searchResults.map(result => searchResult(result, handleResult))}
         </ul>
       </div>
     </div>

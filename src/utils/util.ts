@@ -1,0 +1,1 @@
+export const filterWithId = (idToMatch: string) => (id: string): boolean => idToMatch !== id;

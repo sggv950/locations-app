@@ -1,38 +1,47 @@
 :root {
-  --general-border-radius: 10px;
-  --general-box-shadow-color: 0, 0, 0;
-  --general-box-shadow: 0px 5px 12px 0px rgba(var(--general-box-shadow-color), 0.2);
-  --main-background-color: #282c34;
-  --darker-white: #F6F9FC;
+  --border-radius: 10px;
+  --border-radius-btn: 5px;
+  --box-shadow-color: 0, 0, 0;
+  --box-shadow: 0px 5px 12px 0px rgba(var(--box-shadow-color), 0.2);
+  --background-color-main: #282c34;
+  --darker-white: #f6f9fc;
   --text-grey: #20303c;
   --regular-white: #ffffff;
   --mint-green: #42b883;
+  --link-blue: #1e90ff;
+  --danger-red: #dc3545;
   --search-results-border: #ced4da;
-  --text-font-size: 16px;
-  --text-font-size-sm: 12px;
+  --font-size: 16px;
+  --line-height: 20px;
+  --font-size-sm: 12px;
+  --line-height-sm: 14px;
+  --font-size-xs: 10px;
+  --line-height-xs: 12px;
   --text-font-family: 'Quicksand';
 }
 
 .app {
   display: grid;
-  background-color: var(--main-background-color);
+  background-color: var(--background-color-main);
   min-height: 100vh;
   height: 100vh;
   width: 100vw;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 60px 1fr;
   grid-template-columns: minmax(400px, 30%) auto;
-  grid-template-areas: 
-    "header header" 
-    "locations-list-section locations-details-section";
-}
+  grid-template-areas:
+    'header header'
+    'buttons-section location-details-section'
+    'locations-list-section location-details-section'
+    'locations-list-section location-details-section';
 
-.locations-list-section {
-  grid-area: locations-list-section;
-  background-color: var(--darker-white);
+  @media screen and (max-width: 800px) {
+    height: 100%;
+    grid-template-rows: 50px 60px 300px auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+      'header '
+      'buttons-section'
+      'locations-list-section'
+      'location-details-section';
+  }
 }
-
-.locations-details-section {
-  grid-area: locations-details-section;
-  background-color: lightblue;
-}
-

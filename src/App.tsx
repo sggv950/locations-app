@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { Header } from './components/header/Header';
+import { LocationDetails } from './components/location-details/LocationDetails';
 import { LocationList } from './components/location-list/LocationList';
 import { LocationSearch } from './components/location-search/LocationSearch';
-import { useAppSelector } from './hooks';
+import { MenuButton } from './components/menu-button/MenuButton';
+import { getLocations } from './store/actions';
+import { useAppDispatch } from './store/hooks';
 
 function App() {
-  const locations = useAppSelector((state) => state.locationsList);
-
+  const [isLocationSearch, toggleLocationSearch] = useState(false);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getLocations())
+  }, [])
+  
   return (
     <div className='app'>
       <Header />
-      {/* <LocationList locations={locations} /> */}
-      <LocationSearch />
-      <div className='locations-details-section'></div>
+      <MenuButton
+        isLocationSearch={isLocationSearch}
+        onButtonClick={toggleLocationSearch}
+      />
+      {!isLocationSearch && <LocationList />}
+      {isLocationSearch && <LocationSearch handleToggleLocationSearch={toggleLocationSearch}/>}
+      <LocationDetails />
     </div>
   );
 }

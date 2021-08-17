@@ -4,20 +4,7 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-// import { store } from './store';
-import { locationsReducer } from "./locations-store/reducer";
-import { compose, createStore } from 'redux';
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(locationsReducer, composeEnhancers());
-
-
+import { store } from './store/store';
 
 ReactDOM.render(
   <Provider store={store}>

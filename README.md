@@ -3,7 +3,7 @@
 [live website](https://sggv950-locations-app.herokuapp.com/).
 
 ### note:
-server code can be found [here](https://github.com/sggv950/locations-server).
+server code can be found in [locations-server](https://github.com/sggv950/locations-server).
 
 ## Stack:
 

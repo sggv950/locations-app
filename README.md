@@ -1,9 +1,9 @@
 ## Locations App
 
-[live website](https://wix-editor-locations-app.herokuapp.com/).
+[live website](https://sggv950-locations-app.herokuapp.com/).
 
 ### note:
-server code can be found in [wix-editor-locations-server](https://github.com/sggv950/wix-editor-locations-server).
+server code can be found [here](https://github.com/sggv950/locations-server).
 
 ## Stack:
 
